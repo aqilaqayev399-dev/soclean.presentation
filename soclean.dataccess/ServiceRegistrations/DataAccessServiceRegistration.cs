@@ -12,9 +12,7 @@ public static class DataAccessServiceRegistration
 {
     public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("Default")));
-
-        services.AddScoped<DbContextInitalizer>();
+     
 
         AddRepositories(services);
 

@@ -18,4 +18,12 @@
     <ProjectReference Include="..\soclean.dataccess\soclean.dataccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\.sass-cache\23fb10bb6531a16595cc9a8cbcaeb8f40f41ec84\style.scssc" />
+    <None Include="wwwroot\.sass-cache\23fb10bb6531a16595cc9a8cbcaeb8f40f41ec84\_mixin.scssc" />
+    <None Include="wwwroot\.sass-cache\23fb10bb6531a16595cc9a8cbcaeb8f40f41ec84\_responsive.scssc" />
+    <None Include="wwwroot\.sass-cache\23fb10bb6531a16595cc9a8cbcaeb8f40f41ec84\_theme_color.scssc" />
+    <None Include="wwwroot\.sass-cache\23fb10bb6531a16595cc9a8cbcaeb8f40f41ec84\_variables.scssc" />
+  </ItemGroup>
+
 </Project>
