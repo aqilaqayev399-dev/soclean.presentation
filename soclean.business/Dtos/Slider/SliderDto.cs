@@ -2,7 +2,7 @@
 
 namespace soclean.business.Dtos.Slider;
 
-public class SldierDto : IDto
+public class SliderDto : IDto
 {
     public int Id {  get; set; }
     public string Title { get; set; } = null!;

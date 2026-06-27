@@ -1,0 +1,50 @@
+﻿@using soclean.business.Dtos.Partner
+@model List<PartnerDto>
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        @foreach (var item in Model)
+        {
+            <div class="swiper-slide">
+                <div class="single-brands-logo">
+                    <img src="@item.PictureFile" alt="">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 6,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            0: { slidesPerView: 2 },
+            576: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            992: { slidesPerView: 6 }
+        }
+    });
+</script>
+
+
+
+<style>
+    .single-brands-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+
+        .single-brands-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+</style>

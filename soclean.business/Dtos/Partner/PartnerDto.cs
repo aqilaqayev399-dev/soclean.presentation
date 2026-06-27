@@ -1,6 +1,8 @@
-﻿namespace soclean.business.Dtos.Partner;
+﻿using soclean.business.Dtos.Base;
 
-public class PartnerDto
+namespace soclean.business.Dtos.Partner;
+
+public class PartnerDto : IDto
 {
     public int Id { get; set; }
     public string Name { get; set; } = null!;

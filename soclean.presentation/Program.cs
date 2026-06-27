@@ -1,8 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using soclean.dataccess.Contex;
-using System;
+using soclean.business.ServiceRegistrations;
+using soclean.dataccess.ServiceRegistrations;
+
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddBllServices();
+
+builder.Services.AddDataAccessServices(builder.Configuration);
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
@@ -27,6 +32,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+);
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

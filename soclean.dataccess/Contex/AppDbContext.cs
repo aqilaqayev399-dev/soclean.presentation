@@ -17,6 +17,7 @@ public class AppDbContext : DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Partner> Partners { get; set; }
     public DbSet<Slider> Sliders { get; set; }
+    public DbSet<Blog> Blogs { get; set; }
 
 
 }

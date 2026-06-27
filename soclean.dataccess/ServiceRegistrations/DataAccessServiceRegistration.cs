@@ -26,7 +26,8 @@ public static class DataAccessServiceRegistration
         services.AddScoped<ISliderRepository, SliderRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IPartnerRepository, PartnerRepository>();
-        services.AddScoped<CategoryRepository, CategoryRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IBlogRepository, BlogRepository>();
         //services.AddScoped<BaseAuditableInterceptor>();
 
 

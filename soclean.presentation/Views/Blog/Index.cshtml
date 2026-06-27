@@ -1,0 +1,95 @@
+﻿@using soclean.business.Dtos.Blog
+@model List<BlogDto>
+
+
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb_area breadcumb-style-two bg-img" style="background-image: url(img/bg-img/breadcumb2.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="page-title text-center">
+                    <h2>Fashion Blog</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+<!-- ##### Blog Wrapper Area Start ##### -->
+<div class="blog-wrapper section-padding-80">
+    <div class="container">
+        <div class="row">
+
+            <!-- Single Blog Area -->
+            @foreach (var blog in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-12 mb-4"> <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" class="blog-card"> <img src="@blog.PictureFile" alt="@blog.Name"> <div class="blog-overlay"> <h4>@blog.Name</h4> </div> </a> </div>
+
+
+            }
+        </div>
+    </div>
+</div>
+<!-- ##### Blog Wrapper Area End ##### -->
+
+
+
+<style>
+    .blog-card {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        border-radius: 20px;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,.15);
+        transition: .4s;
+        height: 320px;
+    }
+
+        .blog-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s;
+        }
+
+    .blog-overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 25px;
+        background: linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.05));
+        transition: .4s;
+    }
+
+        .blog-overlay h4 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+    .blog-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 45px rgba(0,0,0,.25);
+    }
+
+        .blog-card:hover img {
+            transform: scale(1.12);
+        }
+
+        .blog-card:hover .blog-overlay {
+            padding-bottom: 35px;
+        }
+
+
+
+    .blog-overlay h4 {
+        font-size: 20px;
+    }
+
+    }
+</style>

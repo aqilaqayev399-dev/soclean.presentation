@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
+using soclean.business.Dtos.Base;
 
 namespace soclean.business.Dtos.Partner;
 
-public class PartnerUpdateDto
+public class PartnerUpdateDto : IDto
 {
     public int Id { get; set; }
     public string Name { get; set; } = null!;

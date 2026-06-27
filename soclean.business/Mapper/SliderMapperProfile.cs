@@ -8,7 +8,7 @@ public class SliderMapperProfile : Profile
 {
     public SliderMapperProfile()
     {
-        CreateMap<Slider, SldierCreateDto>().ReverseMap();
+        CreateMap<Slider, SliderCreateDto>().ReverseMap();
         CreateMap<Slider, SliderDto>().ReverseMap();
         CreateMap<Slider, SliderUpdateDto>().ReverseMap();
     }
