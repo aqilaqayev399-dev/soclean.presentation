@@ -1,0 +1,80 @@
+﻿@using soclean.business.Dtos.CategoryProductVM
+@model List<CategoryProductVM>
+
+<div class="top_catagory_area section-padding-80 clearfix">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+
+                <div class="category-slider owl-carousel">
+
+                    @foreach (var vm in Model)
+                    {
+                        <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
+                             style="background-image: url('@vm.ProductImage');">
+
+                            <div class="catagory-content">
+                                <a href="/Product?categoryId=@vm.CategoryId">
+                                    @vm.CategoryName
+                                </a>
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/js/jquery/jquery-2.2.4.min.js"></script>
+
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+
+<script src="~/js/plugins.js"></script>
+
+<script src="~/js/active.js"></script>
+
+@* @await RenderSectionAsync("Scripts", required: false) *@
+
+
+
+<script>
+
+
+
+        $(document).ready(function () {
+
+        $('.category-slider').owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            smartSpeed: 800,
+
+            responsive: {
+                0: {
+                    items: 1
+                },
+                576: {
+                    items: 2
+                },
+                992: {
+                    items: 3
+                }
+            }
+        });
+
+    });
+</script>
+   

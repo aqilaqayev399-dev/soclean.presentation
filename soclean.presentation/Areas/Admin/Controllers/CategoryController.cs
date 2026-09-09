@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using soclean.business.Dtos.Category;
 using soclean.business.Services.Abstract;
 
 namespace soclean.presentation.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 
 public class CategoryController : Controller
 {

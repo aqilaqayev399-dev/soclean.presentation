@@ -1,114 +1,550 @@
 ﻿@model soclean.business.Dtos.Blog.BlogDetailDto
 
-<div class="container py-5">
+<style>
 
-    <div class="row">
+    /* =====================================================
+           SOCLEAN BLOG DETAIL
+        ===================================================== */
 
-        <!-- Sol tərəf -->
-        <div class="col-lg-8">
+    .soclean-blog-detail {
+        background: #f7faff;
+        color: #172b4d;
+        padding-bottom: 90px;
+    }
 
-            <img src="@Model.Blog.PictureFile"
-                 class="img-fluid rounded shadow mb-4"
-                 alt="@Model.Blog.Name">
 
-            <h2 class="fw-bold mb-3">
-                @Model.Blog.Name
-            </h2>
+    /* ================= HERO ================= */
 
-            <p class="text-muted" style="line-height:30px;font-size:17px;">
-                @Model.Blog.Text
-            </p>
+    .detail-hero {
+        min-height: 330px;
+        background: linear-gradient(90deg, rgba(18,59,112,.97), rgba(18,59,112,.65)), url('/img/bg-img/breadcumb2.jpg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
 
-        </div>
+        .detail-hero:after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 45px solid rgba(251,183,16,.10);
+            right: -70px;
+            top: -100px;
+        }
 
-        <!-- Sağ tərəf -->
-        <div class="col-lg-4">
+    .detail-hero-content {
+        position: relative;
+        z-index: 2;
+    }
 
-            <div class="card border-0 shadow-sm">
+    .detail-breadcrumb {
+        color: rgba(255,255,255,.75);
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
 
-                <div class="card-header bg-dark text-white">
-                    <h4 class="mb-0">Latest Blogs</h4>
+    .detail-hero h1 {
+        color: #fff;
+        font-size: 46px;
+        font-weight: 700;
+        max-width: 850px;
+        line-height: 1.25;
+        margin: 0;
+    }
+
+
+    /* ================= MAIN ================= */
+
+    .detail-main {
+        padding-top: 70px;
+    }
+
+
+    /* ================= ARTICLE ================= */
+
+    .article-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 35px rgba(18,59,112,.08);
+        border: 1px solid #edf1f7;
+    }
+
+
+    /* ================= IMAGE ================= */
+
+    .article-image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        display: block;
+    }
+
+
+    /* ================= ARTICLE CONTENT ================= */
+
+    .article-content {
+        padding: 42px 45px 50px;
+    }
+
+    .article-category {
+        display: inline-block;
+        color: #fbb710;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.8px;
+        margin-bottom: 12px;
+    }
+
+    .article-content h2 {
+        color: #123b70;
+        font-size: 38px;
+        line-height: 1.3;
+        font-weight: 700;
+        margin: 0 0 25px;
+    }
+
+    .blog-text {
+        color: #606060;
+        font-size: 16px;
+        line-height: 2;
+        text-align: justify;
+        white-space: pre-line;
+        margin: 0;
+    }
+
+
+    /* ================= SIDEBAR ================= */
+
+    .latest-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 35px rgba(18,59,112,.09);
+        border: 1px solid #edf1f7;
+        position: sticky;
+        top: 100px;
+    }
+
+
+    /* ================= SIDEBAR HEADER ================= */
+
+    .latest-header {
+        background: #123b70;
+        color: #fff;
+        padding: 20px 23px;
+        font-size: 19px;
+        font-weight: 700;
+        position: relative;
+    }
+
+        .latest-header:after {
+            content: "";
+            position: absolute;
+            left: 23px;
+            bottom: 0;
+            width: 45px;
+            height: 3px;
+            background: #fbb710;
+        }
+
+        .latest-header i {
+            color: #fbb710;
+            margin-right: 8px;
+        }
+
+
+    /* ================= SIDEBAR BODY ================= */
+
+    .latest-body {
+        padding: 18px;
+        max-height: 650px;
+        overflow-y: auto;
+    }
+
+        .latest-body::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .latest-body::-webkit-scrollbar-thumb {
+            background: #d8dee8;
+            border-radius: 20px;
+        }
+
+
+    /* ================= LATEST ITEM ================= */
+
+    .latest-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px;
+        margin-bottom: 13px;
+        border-radius: 13px;
+        border: 1px solid #edf1f7;
+        background: #fff;
+        color: #222;
+        text-decoration: none;
+        transition: all .3s ease;
+    }
+
+        .latest-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .latest-item:hover {
+            transform: translateY(-4px);
+            background: #f7faff;
+            border-color: #dce7f5;
+            box-shadow: 0 8px 22px rgba(18,59,112,.10);
+            text-decoration: none;
+        }
+
+
+        /* ================= ITEM IMAGE ================= */
+
+        .latest-item img {
+            width: 95px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+            transition: transform .4s ease;
+        }
+
+        .latest-item:hover img {
+            transform: scale(1.06);
+        }
+
+
+    /* ================= ITEM CONTENT ================= */
+
+    .latest-content {
+        min-width: 0;
+        flex: 1;
+    }
+
+        .latest-content h6 {
+            color: #123b70;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 0 0 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .latest-content p {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 0;
+            text-align: left;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+
+    /* ================= ARTICLE FOOTER ================= */
+
+    .article-footer {
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #edf1f7;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .article-footer-text {
+        color: #777;
+        font-size: 13px;
+    }
+
+        .article-footer-text i {
+            color: #fbb710;
+            margin-right: 6px;
+        }
+
+    .back-blog {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 20px;
+        background: #123b70;
+        color: #fff;
+        border-radius: 7px;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: .3s;
+    }
+
+        .back-blog i {
+            margin-right: 8px;
+        }
+
+        .back-blog:hover {
+            background: #fbb710;
+            color: #fff;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+
+    /* ================= MOBILE ================= */
+
+    @@media (max-width: 991px) {
+
+        .detail-hero {
+            min-height: 300px;
+        }
+
+            .detail-hero h1 {
+                font-size: 38px;
+            }
+
+        .detail-main {
+            padding-top: 50px;
+        }
+
+        .latest-card {
+            position: static;
+            margin-top: 30px;
+        }
+    }
+
+
+    @@media (max-width: 767px) {
+
+        .detail-hero {
+            min-height: 270px;
+        }
+
+            .detail-hero h1 {
+                font-size: 31px;
+            }
+
+        .article-image {
+            height: 300px;
+        }
+
+        .article-content {
+            padding: 30px 22px 35px;
+        }
+
+            .article-content h2 {
+                font-size: 28px;
+            }
+
+        .blog-text {
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: left;
+        }
+
+        .latest-item img {
+            width: 85px;
+            height: 70px;
+        }
+
+        .article-footer {
+            display: block;
+        }
+
+        .back-blog {
+            margin-top: 15px;
+        }
+    }
+
+</style>
+
+<div class="soclean-blog-detail">
+
+    ```
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="detail-hero">
+
+        <div class="container">
+
+            <div class="detail-hero-content">
+
+                <div class="detail-breadcrumb">
+
+                    Ana Səhifə
+                    &nbsp; / &nbsp;
+                    Bloqlarımız
+                    &nbsp; / &nbsp;
+                    Məqalə
+
                 </div>
 
-                <div class="card-body">
-
-                    @foreach (var item in Model.LatesBlogs)
-                    {
-                        <a asp-action="Detail"
-                           asp-route-id="@item.Id"
-                           class="text-decoration-none text-dark">
-
-                            <div class="d-flex mb-4">
-
-                                <img src="@item.PictureFile"
-                                     style="width:100px;height:80px;object-fit:cover;border-radius:10px;">
-
-                                <div class="ms-3">
-
-                                    <h6 class="fw-bold mb-2">
-                                        @item.Name
-                                    </h6>
-
-                                    <small class="text-muted">
-                                        @(item.Text.Length > 70
-                                                                            ? item.Text.Substring(0, 70) + "..."
-                                                                            : item.Text)
-                                </small>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        <hr />
-                                        }
-
-                </div>
+                <h1>
+                    @Model.Blog.Name
+                </h1>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
+
+
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
+
+    <section class="detail-main">
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <!-- =================================================
+                     ARTICLE
+                ================================================= -->
+
+                <div class="col-lg-8">
+
+                    <article class="article-card">
+
+
+                        <!-- IMAGE -->
+
+                        <img src="@Model.Blog.PictureFile"
+                             class="article-image"
+                             alt="@Model.Blog.Name" />
+
+
+                        <!-- CONTENT -->
+
+                        <div class="article-content">
+
+                            <span class="article-category">
+                                So Clean Blog
+                            </span>
+
+                            <h2>
+                                @Model.Blog.Name
+                            </h2>
+
+                            <p class="blog-text">
+                                @Model.Blog.Text
+                            </p>
+
+
+                            <!-- FOOTER -->
+
+                            <div class="article-footer">
+
+                                <div class="article-footer-text">
+
+                                    <i class="fa fa-check-circle"></i>
+
+                                    So Clean Professional Hygiene Solutions
+
+                                </div>
+
+                                <a asp-controller="Blog"
+                                   asp-action="Index"
+                                   class="back-blog">
+
+                                    <i class="fa fa-arrow-left"></i>
+
+                                    Bütün bloqlar
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- =================================================
+                     LATEST BLOGS
+                ================================================= -->
+
+                <div class="col-lg-4">
+
+                    <div class="latest-card">
+
+
+                        <!-- HEADER -->
+
+                        <div class="latest-header">
+
+                            <i class="fa fa-newspaper-o"></i>
+
+                            Son Bloqlar
+
+                        </div>
+
+
+                        <!-- BODY -->
+
+                        <div class="latest-body">
+
+                            @foreach (var item in Model.LatesBlogs)
+                            {
+
+                                <a asp-controller="Blog"
+                                   asp-action="Detail"
+                                   asp-route-id="@item.Id"
+                                   class="latest-item">
+
+
+                                    <img src="@item.PictureFile"
+                                         alt="@item.Name" />
+
+
+                                    <div class="latest-content">
+
+                                        <h6>
+                                            @item.Name
+                                        </h6>
+
+                                        <p>
+
+                                            @(item.Text.Length > 70
+                                                                                    ? item.Text.Substring(0, 70) + "..."
+                                                                                    : item.Text)
+
+                                    </p>
+
+                                    </div>
+
+
+                                </a>
+
+                                                        }
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+    ```
 
 </div>
-
-
-<style>
-
-
-.card{
-    border-radius:15px;
-}
-
-.card-header{
-    border-radius:15px 15px 0 0 !important;
-}
-
-.card-body a{
-    transition:.3s;
-}
-
-.card-body a:hover{
-    transform:translateX(6px);
-    display:block;
-}
-
-.card-body img{
-    transition:.4s;
-}
-
-.card-body a:hover img{
-    transform:scale(1.08);
-}
-
-h2{
-    color:#222;
-}
-
-p{
-    text-align:justify;
-}
-
-</style>

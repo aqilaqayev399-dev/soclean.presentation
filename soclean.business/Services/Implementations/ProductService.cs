@@ -12,9 +12,9 @@ public class ProductService : CrudService<Product, ProductCreateDto, ProductUpda
 {
     private readonly IProductRepository _productRepository;
     private readonly ICategoryRepository _categoryRepository;
-    private readonly ICloudinaryManager _cloudinaryManager;
+    private readonly ICloudManager _cloudinaryManager;
     private readonly IMapper _mapper;
-    public ProductService(IProductRepository repository, IMapper mapper, ICategoryRepository categoryRepository, ICloudinaryManager cloudinaryManager) : base(repository, mapper)
+    public ProductService(IProductRepository repository, IMapper mapper, ICategoryRepository categoryRepository, ICloudManager cloudinaryManager) : base(repository, mapper)
     {
         _productRepository = repository;
         _categoryRepository = categoryRepository;

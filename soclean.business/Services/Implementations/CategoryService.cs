@@ -11,10 +11,10 @@ namespace soclean.business.Services.Implementations;
 
 public class CategoryService : CrudService<Category, CategoryCreateDto, CategoryUpdateDto, CategoryDto>, ICategoryService   
 {
-    private readonly ICloudinaryManager _cloudinaryManager;
+    private readonly ICloudManager _cloudinaryManager;
     private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
-    public CategoryService(ICategoryRepository repository, IMapper mapper, ICategoryRepository categoryRepository, ICloudinaryManager cloudinaryManager) : base(repository, mapper)
+    public CategoryService(ICategoryRepository repository, IMapper mapper, ICategoryRepository categoryRepository, ICloudManager cloudinaryManager) : base(repository, mapper)
     {
         _categoryRepository = categoryRepository;
         _cloudinaryManager = cloudinaryManager;

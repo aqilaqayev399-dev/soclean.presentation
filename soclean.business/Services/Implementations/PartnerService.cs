@@ -12,10 +12,10 @@ namespace soclean.business.Services.Implementations;
 public class PartnerService : CrudService<Partner, PartnerCreateDto, PartnerUpdateDto, PartnerDto>, IPartnerService
 {
     private readonly IPartnerRepository _partnerRepository;
-    private readonly ICloudinaryManager _cloudinaryManager;
+    private readonly ICloudManager _cloudinaryManager;
 
 
-    public PartnerService(IPartnerRepository repository, IMapper mapper, ICloudinaryManager cloudinaryManager) : base(repository, mapper)
+    public PartnerService(IPartnerRepository repository, IMapper mapper, ICloudManager cloudinaryManager) : base(repository, mapper)
     {
         _partnerRepository = repository;
         _cloudinaryManager = cloudinaryManager;
@@ -87,3 +87,5 @@ public class PartnerService : CrudService<Partner, PartnerCreateDto, PartnerUpda
 
 
 }
+
+

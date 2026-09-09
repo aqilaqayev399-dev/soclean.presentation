@@ -1,95 +1,514 @@
 ﻿@using soclean.business.Dtos.Blog
 @model List<BlogDto>
 
-
-
-<!-- ##### Breadcumb Area Start ##### -->
-<div class="breadcumb_area breadcumb-style-two bg-img" style="background-image: url(img/bg-img/breadcumb2.jpg);">
-    <div class="container h-100">
-        <div class="row h-100 align-items-center">
-            <div class="col-12">
-                <div class="page-title text-center">
-                    <h2>Fashion Blog</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ##### Breadcumb Area End ##### -->
-<!-- ##### Blog Wrapper Area Start ##### -->
-<div class="blog-wrapper section-padding-80">
-    <div class="container">
-        <div class="row">
-
-            <!-- Single Blog Area -->
-            @foreach (var blog in Model)
-            {
-                <div class="col-lg-4 col-md-6 col-12 mb-4"> <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" class="blog-card"> <img src="@blog.PictureFile" alt="@blog.Name"> <div class="blog-overlay"> <h4>@blog.Name</h4> </div> </a> </div>
-
-
-            }
-        </div>
-    </div>
-</div>
-<!-- ##### Blog Wrapper Area End ##### -->
-
-
-
 <style>
-    .blog-card {
-        position: relative;
-        display: block;
-        overflow: hidden;
-        border-radius: 20px;
-        text-decoration: none;
-        box-shadow: 0 10px 30px rgba(0,0,0,.15);
-        transition: .4s;
-        height: 320px;
+
+    /* =====================================================
+           SOCLEAN BLOG PAGE
+        ===================================================== */
+
+    .soclean-blog {
+        color: #172b4d;
+        background: #fff;
     }
+
+
+    /* ================= HERO ================= */
+
+    .blog-hero {
+        min-height: 360px;
+        background: linear-gradient(90deg, rgba(18,59,112,.97) 0%, rgba(18,59,112,.88) 48%, rgba(18,59,112,.45) 100%), url('/img/bg-img/breadcumb2.jpg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .blog-hero:after {
+            content: "";
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: rgba(251,183,16,.12);
+            right: 8%;
+            top: -120px;
+        }
+
+    .blog-hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .blog-breadcrumb {
+        color: rgba(255,255,255,.75);
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    .blog-hero h1 {
+        color: #fff;
+        font-size: 56px;
+        font-weight: 700;
+        margin: 0 0 12px;
+    }
+
+    .blog-hero p {
+        color: #fbb710;
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+    }
+
+
+    /* ================= BLOG SECTION ================= */
+
+    .blog-section {
+        padding: 85px 0 100px;
+        background: #f7faff;
+    }
+
+
+    /* ================= SECTION HEADING ================= */
+
+    .blog-heading {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 50px;
+    }
+
+        .blog-heading .small-title {
+            color: #fbb710;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .blog-heading h2 {
+            color: #123b70;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .blog-heading p {
+            color: #777;
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+
+    /* ================= BLOG CARD ================= */
+
+    .blog-card-wrapper {
+        margin-bottom: 30px;
+    }
+
+    .blog-card {
+        display: block;
+        position: relative;
+        height: 350px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #fff;
+        text-decoration: none;
+        box-shadow: 0 8px 28px rgba(18,59,112,.09);
+        transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+
+        /* ================= IMAGE ================= */
 
         .blog-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: .6s;
+            transition: transform .6s ease;
         }
+
+
+    /* ================= OVERLAY ================= */
 
     .blog-overlay {
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
-        padding: 25px;
-        background: linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.05));
-        transition: .4s;
+        padding: 70px 25px 25px;
+        background: linear-gradient( to top, rgba(18,59,112,.96) 0%, rgba(18,59,112,.70) 45%, rgba(18,59,112,0) 100% );
+        transition: .35s;
     }
 
-        .blog-overlay h4 {
-            color: #fff;
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0;
-            line-height: 1.4;
+
+    /* ================= CATEGORY LINE ================= */
+
+    .blog-category {
+        display: inline-block;
+        color: #fbb710;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+    }
+
+
+    /* ================= TITLE ================= */
+
+    .blog-overlay h4 {
+        color: #fff;
+        font-size: 21px;
+        line-height: 1.4;
+        font-weight: 700;
+        margin: 0;
+        transition: .3s;
+    }
+
+
+    /* ================= ARROW ================= */
+
+    .blog-read-more {
+        display: flex;
+        align-items: center;
+        margin-top: 13px;
+        color: rgba(255,255,255,.85);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: .35s;
+    }
+
+        .blog-read-more i {
+            color: #fbb710;
+            margin-left: 8px;
+            transition: .3s;
         }
 
+
+    /* ================= HOVER ================= */
+
     .blog-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 45px rgba(0,0,0,.25);
+        transform: translateY(-9px);
+        box-shadow: 0 20px 42px rgba(18,59,112,.17);
+        text-decoration: none;
     }
 
         .blog-card:hover img {
-            transform: scale(1.12);
+            transform: scale(1.08);
         }
 
         .blog-card:hover .blog-overlay {
-            padding-bottom: 35px;
+            padding-bottom: 28px;
+        }
+
+        .blog-card:hover .blog-read-more {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+            .blog-card:hover .blog-read-more i {
+                transform: translateX(5px);
+            }
+
+
+    /* ================= BOTTOM CTA ================= */
+
+    .blog-cta {
+        margin-top: 35px;
+        padding: 45px 50px;
+        border-radius: 18px;
+        background: #123b70;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .blog-cta:after {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border: 35px solid rgba(251,183,16,.10);
+            border-radius: 50%;
+            right: -80px;
+            top: -100px;
+        }
+
+        .blog-cta h3 {
+            color: #fff;
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .blog-cta p {
+            color: rgba(255,255,255,.72);
+            font-size: 14px;
+            margin: 0;
+        }
+
+    .blog-cta-button {
+        display: inline-block;
+        padding: 13px 27px;
+        background: #fbb710;
+        color: #fff;
+        border-radius: 7px;
+        font-size: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: .3s;
+        position: relative;
+        z-index: 2;
+    }
+
+        .blog-cta-button:hover {
+            background: #e5a700;
+            color: #fff;
+            transform: translateY(-2px);
         }
 
 
+    /* ================= TABLET ================= */
 
-    .blog-overlay h4 {
-        font-size: 20px;
+    @@media (max-width: 991px) {
+
+        .blog-hero {
+            min-height: 320px;
+        }
+
+            .blog-hero h1 {
+                font-size: 45px;
+            }
+
+        .blog-section {
+            padding: 65px 0 80px;
+        }
+
+        .blog-card {
+            height: 330px;
+        }
+
+        .blog-cta {
+            padding: 40px 30px;
+        }
     }
 
+
+    /* ================= MOBILE ================= */
+
+    @@media (max-width: 767px) {
+
+        .blog-hero {
+            min-height: 300px;
+        }
+
+            .blog-hero h1 {
+                font-size: 36px;
+            }
+
+            .blog-hero p {
+                font-size: 16px;
+            }
+
+        .blog-section {
+            padding: 55px 0 65px;
+        }
+
+        .blog-heading {
+            margin-bottom: 35px;
+        }
+
+            .blog-heading h2 {
+                font-size: 30px;
+            }
+
+        .blog-card {
+            height: 310px;
+        }
+
+        .blog-overlay {
+            padding: 65px 20px 20px;
+        }
+
+            .blog-overlay h4 {
+                font-size: 19px;
+            }
+
+        .blog-read-more {
+            opacity: 1;
+            transform: none;
+        }
+
+        .blog-cta {
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .blog-cta-button {
+            margin-top: 22px;
+        }
     }
+
 </style>
+
+<div class="soclean-blog">
+
+    ```
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="blog-hero">
+
+        <div class="container">
+
+            <div class="blog-hero-content">
+
+                <div class="blog-breadcrumb">
+
+                    Ana Səhifə &nbsp; / &nbsp; Bloqlarımız
+
+                </div>
+
+                <h1>Bloqlarımız</h1>
+
+                <p>
+                    Gigiyena, təmizlik və peşəkar həllər haqqında faydalı məlumatlar
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BLOG SECTION
+    ===================================================== -->
+
+    <section class="blog-section">
+
+        <div class="container">
+
+
+            <!-- HEADING -->
+
+            <div class="blog-heading">
+
+                <div class="small-title">
+                    So Clean Blog
+                </div>
+
+                <h2>Son Məqalələrimiz</h2>
+
+                <p>
+                    Təmizlik, gigiyena, məhsullar və peşəkar təmizlik
+                    həlləri haqqında faydalı məlumatları bizim bloqdan kəşf edin.
+                </p>
+
+            </div>
+
+
+            <!-- BLOGS -->
+
+            <div class="row">
+
+                @foreach (var blog in Model)
+                {
+
+                    <div class="col-lg-4 col-md-6 col-12 blog-card-wrapper">
+
+                        <a asp-controller="Blog"
+                           asp-action="Detail"
+                           asp-route-id="@blog.Id"
+                           class="blog-card">
+
+
+                            <!-- IMAGE -->
+
+                            <img src="@blog.PictureFile"
+                                 alt="@blog.Name" />
+
+
+                            <!-- OVERLAY -->
+
+                            <div class="blog-overlay">
+
+                                <span class="blog-category">
+                                    So Clean
+                                </span>
+
+                                <h4>
+                                    @blog.Name
+                                </h4>
+
+                                <div class="blog-read-more">
+
+                                    Ətraflı oxu
+
+                                    <i class="fa fa-arrow-right"></i>
+
+                                </div>
+
+                            </div>
+
+
+                        </a>
+
+                    </div>
+
+                }
+
+            </div>
+
+
+            <!-- CTA -->
+
+            <div class="blog-cta">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-8">
+
+                        <h3>
+                            Peşəkar gigiyena həlləri haqqında daha çox öyrənin
+                        </h3>
+
+                        <p>
+                            So Clean məhsulları və xidmətləri haqqında ətraflı
+                            məlumat almaq üçün bizimlə əlaqə saxlayın.
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-4 text-lg-right">
+
+                        <a href="/Contact"
+                           class="blog-cta-button">
+
+                            Bizimlə əlaqə
+
+                            <i class="fa fa-arrow-right ml-2"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+    ```
+
+</div>

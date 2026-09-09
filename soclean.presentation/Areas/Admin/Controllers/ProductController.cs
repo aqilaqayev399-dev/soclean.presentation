@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using soclean.business.Dtos.Product;
 using soclean.business.Services.Abstract;
+using soclean.business.Services.Implementations;
 
 namespace soclean.presentation.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class ProductController : Controller
 {
     private readonly IProductService _productService;
@@ -71,5 +74,12 @@ public class ProductController : Controller
         await _productService.UpdateProductAsync(dto);
 
         return RedirectToAction(nameof(Index));
+    }
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        await _productService.DeleteAsync(id);
+        return RedirectToAction("index");
+
     }
 }

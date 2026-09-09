@@ -1,0 +1,883 @@
+﻿@{
+    ViewData["Title"] = "Haqqımızda";
+}
+
+<style>
+    .about-page {
+        color: #172b4d;
+    }
+
+    .about-hero {
+        min-height: 420px;
+        background: linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.88) 42%, rgba(255,255,255,.15) 100%), url('/img/bg-img/breadcumb.jpg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+    }
+
+    .about-hero-content {
+        max-width: 650px;
+    }
+
+    .about-hero h1 {
+        font-size: 58px;
+        font-weight: 700;
+        color: #123b70;
+        margin-bottom: 12px;
+    }
+
+    .about-hero .subtitle {
+        font-size: 22px;
+        color: #1b5da8;
+        font-weight: 500;
+        margin-bottom: 25px;
+    }
+
+    .hero-features {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .hero-feature {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 600;
+    }
+
+        .hero-feature i {
+            color: #fbb710;
+            font-size: 21px;
+        }
+
+    .about-intro {
+        padding: 90px 0;
+    }
+
+        .about-intro h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #123b70;
+            margin-bottom: 25px;
+        }
+
+            .about-intro h2 span {
+                color: #fbb710;
+            }
+
+        .about-intro p {
+            color: #606060;
+            line-height: 1.9;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+    .about-image {
+        position: relative;
+    }
+
+        .about-image img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.12);
+        }
+
+    .section-heading {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+        .section-heading .small-title {
+            color: #fbb710;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            color: #123b70;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: #777;
+            max-width: 650px;
+            margin: auto;
+        }
+
+    .category-section {
+        padding: 90px 0;
+        background: #f7faff;
+    }
+
+    .category-card {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        height: 100%;
+        box-shadow: 0 7px 25px rgba(18,59,112,.08);
+        transition: all .3s ease;
+        border: 1px solid #edf1f7;
+    }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px rgba(18,59,112,.14);
+        }
+
+    .category-image {
+        height: 190px;
+        overflow: hidden;
+    }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s ease;
+        }
+
+    .category-card:hover .category-image img {
+        transform: scale(1.06);
+    }
+
+    .category-content {
+        padding: 25px;
+    }
+
+    .category-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #123b70;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .category-content h4 {
+        font-size: 19px;
+        color: #123b70;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .category-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .category-content li {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 9px;
+        position: relative;
+        padding-left: 20px;
+    }
+
+        .category-content li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #fbb710;
+            font-weight: bold;
+        }
+
+    .why-section {
+        padding: 85px 0;
+        background: #123b70;
+        color: #fff;
+    }
+
+        .why-section .section-heading h2 {
+            color: #fff;
+        }
+
+        .why-section .section-heading p {
+            color: rgba(255,255,255,.75);
+        }
+
+    .why-card {
+        text-align: center;
+        padding: 25px 15px;
+        height: 100%;
+        border: 1px solid rgba(255,255,255,.15);
+        border-radius: 14px;
+        transition: .3s;
+    }
+
+        .why-card:hover {
+            background: rgba(255,255,255,.07);
+            transform: translateY(-5px);
+        }
+
+    .why-icon {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fbb710;
+        font-size: 22px;
+    }
+
+    .why-card h5 {
+        color: #fff;
+        font-size: 15px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .mission-section {
+        padding: 90px 0;
+        background: #f7faff;
+    }
+
+    .mission-box {
+        background: #fff;
+        border-radius: 20px;
+        padding: 55px;
+        box-shadow: 0 10px 35px rgba(0,0,0,.07);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .mission-box:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: #fbb710;
+        }
+
+        .mission-box h2 {
+            color: #123b70;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .mission-box p {
+            color: #666;
+            line-height: 1.9;
+        }
+
+    .stats-section {
+        padding: 65px 0;
+        background: #fff;
+    }
+
+    .stat-box {
+        text-align: center;
+        border-right: 1px solid #e5e5e5;
+    }
+
+        .stat-box:last-child {
+            border-right: none;
+        }
+
+        .stat-box h2 {
+            color: #123b70;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-box p {
+            color: #777;
+            margin: 0;
+            font-size: 14px;
+        }
+
+    .contact-banner {
+        padding: 65px 0;
+        background: linear-gradient(135deg, #edf5ff, #f9fbff);
+    }
+
+        .contact-banner h2 {
+            color: #123b70;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .contact-banner p {
+            color: #666;
+        }
+
+    .btn-soclean {
+        background: #fbb710;
+        color: #fff;
+        padding: 13px 28px;
+        border-radius: 7px;
+        font-weight: 600;
+        display: inline-block;
+        transition: .3s;
+    }
+
+        .btn-soclean:hover {
+            background: #e5a700;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+    @@media (max-width: 991px) {
+        .about-hero h1 {
+            font-size: 44px;
+        }
+
+        .about-intro {
+            padding: 60px 0;
+        }
+
+        .about-image {
+            margin-top: 40px;
+        }
+
+        .stat-box {
+            margin-bottom: 30px;
+            border-right: none;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .about-hero {
+            min-height: 350px;
+        }
+
+            .about-hero h1 {
+                font-size: 36px;
+            }
+
+        .hero-features {
+            gap: 15px;
+        }
+
+        .mission-box {
+            padding: 35px 25px;
+        }
+    }
+</style>
+
+
+<div class="about-page">
+
+    <!-- ================= HERO ================= -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+
+                <div class="mb-3">
+                    <small>
+                        Ana Səhifə &nbsp; / &nbsp; Haqqımızda
+                    </small>
+                </div>
+
+                <h1>Haqqımızda</h1>
+
+                <div class="subtitle">
+                    Peşəkar gigiyena və təmizlik həlləri
+                </div>
+
+                <div class="hero-features">
+
+                    <div class="hero-feature">
+                        <i class="fa fa-leaf"></i>
+                        <span>Təmizlik</span>
+                    </div>
+
+                    <div class="hero-feature">
+                        <i class="fa fa-shield"></i>
+                        <span>Gigiyena</span>
+                    </div>
+
+                    <div class="hero-feature">
+                        <i class="fa fa-handshake-o"></i>
+                        <span>Etibar</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= ABOUT INTRO ================= -->
+    <section class="about-intro">
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+
+                    <h2>
+                        So <span>Clean</span>
+                    </h2>
+
+                    <p>
+                        So Clean ofislər, hotellər, restoranlar, tibb müəssisələri,
+                        biznes mərkəzləri, sənaye obyektləri və digər kommersiya
+                        müəssisələri üçün peşəkar gigiyena və təmizlik məhsullarının
+                        kompleks təchizatını həyata keçirir.
+                    </p>
+
+                    <p>
+                        Biz müasir biznesin ehtiyaclarına uyğun, yüksək keyfiyyətli,
+                        etibarlı və səmərəli məhsullar təqdim edərək müştərilərimizə
+                        təhlükəsiz, komfortlu və sağlam iş mühitinin yaradılmasında
+                        etibarlı tərəfdaş oluruq.
+                    </p>
+
+                    <p>
+                        Peşəkar yanaşmamız, geniş məhsul çeşidimiz və
+                        müştəriyönümlü xidmət prinsiplərimiz bizi korporativ sektor
+                        üçün etibarlı həll tərəfdaşına çevirir.
+                    </p>
+
+                    <a href="/Contact" class="btn-soclean mt-3">
+                        Bizimlə əlaqə
+                        <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="about-image">
+
+                        <img src="/img/soclean.png"
+                             alt="So Clean Professional Cleaning">
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+    <section class="category-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Bizim məhsullar
+                </div>
+
+                <h2>Məhsul Kateqoriyaları</h2>
+
+                <p>
+                    Müəssisənizin bütün gigiyena və təmizlik ehtiyacları üçün
+                    peşəkar və etibarlı məhsul həlləri.
+                </p>
+
+            </div>
+
+
+            <div class="row">
+
+                <!-- KAĞIZ -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="category-card">
+
+                        <div class="category-content">
+
+                            <div class="category-icon">
+                                <i class="fa fa-file-alt"></i>
+                            </div>
+
+                            <h4>Kağız Gigiyena Məhsulları</h4>
+
+                            <ul>
+                                <li>Tualet kağızı</li>
+                                <li>Kağız dəsmallar</li>
+                                <li>Salfetlər</li>
+                                <li>Üz salfetləri</li>
+                                <li>Sənaye tipli silmə kağızları</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- KİMYA -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="category-card">
+
+                        <div class="category-content">
+
+                            <div class="category-icon">
+                                <i class="fa fa-flask"></i>
+                            </div>
+
+                            <h4>Peşəkar Təmizlik Kimyası</h4>
+
+                            <ul>
+                                <li>Universal yuyucu vasitələr</li>
+                                <li>Döşəmə təmizləyiciləri</li>
+                                <li>Şüşə və güzgü təmizləyiciləri</li>
+                                <li>Mətbəx üçün peşəkar kimyəvi vasitələr</li>
+                                <li>Sanitar qovşaqları üçün təmizləyicilər</li>
+                                <li>Dezinfeksiya vasitələri</li>
+                                <li>Yağ və çirk təmizləyən formulalar</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- GİGİYENA -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="category-card">
+
+                        <div class="category-content">
+
+                            <div class="category-icon">
+                                <i class="fa fa-tint"></i>
+                            </div>
+
+                            <h4>Gigiyena Sistemləri</h4>
+
+                            <ul>
+                                <li>Maye sabun dispenserləri</li>
+                                <li>Kağız dəsmal dispenserləri</li>
+                                <li>Tualet kağızı dispenserləri</li>
+                                <li>Dezinfeksiya dispenserləri</li>
+                                <li>Sensorlu gigiyena sistemləri</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- AVADANLIQLAR -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="category-card">
+
+                        <div class="category-content">
+
+                            <div class="category-icon">
+                                <i class="fa fa-cogs"></i>
+                            </div>
+
+                            <h4>Peşəkar Təmizlik Avadanlıqları</h4>
+
+                            <ul>
+                                <li>Mop sistemləri</li>
+                                <li>Təmizlik arabaları</li>
+                                <li>Vedrələr və sıxıcı sistemlər</li>
+                                <li>Fırçalar və şotkalar</li>
+                                <li>Şüşəsilən avadanlıqlar</li>
+                                <li>Mikrofiber bezlər</li>
+                                <li>Tullantı torbaları və konteynerlər</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- HOTEL -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="category-card">
+
+                        <div class="category-content">
+
+                            <div class="category-icon">
+                                <i class="fa fa-hotel"></i>
+                            </div>
+
+                            <h4>Hotel və HoReCa Həlləri</h4>
+
+                            <ul>
+                                <li>Hotel kosmetikası</li>
+                                <li>Birdəfəlik gigiyena məhsulları</li>
+                                <li>Housekeeping ləvazimatları</li>
+                                <li>Otaq təchizatı məhsulları</li>
+                                <li>Restoran və mətbəx üçün istehlak materialları</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- KORPORATİV -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="category-card">
+
+                        <div class="category-content">
+
+                            <div class="category-icon">
+                                <i class="fa fa-building"></i>
+                            </div>
+
+                            <h4>Korporativ Həllər</h4>
+
+                            <ul>
+                                <li>Korporativ müştərilər üçün fərdi həllər</li>
+                                <li>Daimi təchizat və logistika dəstəyi</li>
+                                <li>Rəqabətqabiliyyətli qiymətlər</li>
+                                <li>Operativ çatdırılma</li>
+                                <li>Texniki konsultasiya və dəstək</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= WHY SO CLEAN ================= -->
+    <section class="why-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Üstünlüklərimiz
+                </div>
+
+                <h2>Niyə So Clean?</h2>
+
+                <p>
+                    Biz sadəcə məhsul satmırıq. Müəssisələrin gigiyena
+                    standartlarını yüksəldən və əməliyyat xərclərini
+                    optimallaşdıran peşəkar həllər təqdim edirik.
+                </p>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fa fa-cubes"></i>
+                        </div>
+                        <h5>Geniş məhsul çeşidi</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fa fa-certificate"></i>
+                        </div>
+                        <h5>Dünya və yerli istehsalçıların etibarlı məhsulları</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fa fa-truck"></i>
+                        </div>
+                        <h5>Daimi stok və operativ çatdırılma</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <h5>Korporativ müştərilər üçün fərdi həllər</h5>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fa fa-tags"></i>
+                        </div>
+                        <h5>Rəqabətqabiliyyətli qiymətlər</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fa fa-shield"></i>
+                        </div>
+                        <h5>Keyfiyyətə beynəlxalq standartlara uyğun zəmanət</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fa fa-headphones"></i>
+                        </div>
+                        <h5>Peşəkar konsultasiya və texniki dəstək</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h5>Uzunmüddətli tərəfdaşlığa əsaslanan əməkdaşlıq</h5>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATISTICS ================= -->
+    <section class="stats-section">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-3 col-6 stat-box">
+                    <h2>1000+</h2>
+                    <p>Məmnun müştəri</p>
+                </div>
+
+                <div class="col-md-3 col-6 stat-box">
+                    <h2>500+</h2>
+                    <p>Məhsul çeşidi</p>
+                </div>
+
+                <div class="col-md-3 col-6 stat-box">
+                    <h2>50+</h2>
+                    <p>Etibarlı brend</p>
+                </div>
+
+                <div class="col-md-3 col-6 stat-box">
+                    <h2>24/7</h2>
+                    <p>Müştəri dəstəyi</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MISSION ================= -->
+    <section class="mission-section">
+
+        <div class="container">
+
+            <div class="mission-box">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-8">
+
+                        <h2>Missiyamız</h2>
+
+                        <p>
+                            Məqsədimiz müştərilərimizi yalnız məhsullarla deyil,
+                            bizneslərinin səmərəliliyini artıran peşəkar gigiyena
+                            həlləri ilə təmin etməkdir.
+                        </p>
+
+                        <p>
+                            So Clean keyfiyyət, etibarlılıq və innovasiyanı bir
+                            araya gətirərək hər bir müəssisədə təmizlik,
+                            təhlükəsizlik və komfort standartlarının
+                            yüksəldilməsinə töhfə verir.
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-4 text-center">
+
+                        <h3 style="color:#123b70; font-weight:700;">
+                            So Clean
+                        </h3>
+
+                        <p style="color:#fbb710; font-weight:600;">
+                            Professional Cleaning<br />
+                            & Hygiene Solutions
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT CTA ================= -->
+    <section class="contact-banner">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-8">
+
+                    <h2>
+                        Təmizlik standartınızı bizimlə yüksəldin!
+                    </h2>
+
+                    <p>
+                        Peşəkar gigiyena həlləri və etibarlı təchizat üçün
+                        bizimlə əlaqə saxlayın.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-right">
+
+                    <a href="/Contact" class="btn-soclean">
+                        Bizimlə əlaqə
+                        <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>

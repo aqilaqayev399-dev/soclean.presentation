@@ -11,9 +11,9 @@ namespace soclean.business.Services.Implementations;
 public class SliderService : CrudService<Slider, SliderCreateDto, SliderUpdateDto, SliderDto>, ISliderService
 {
     private readonly ISliderRepository _sliderRepository;
-    private readonly ICloudinaryManager _cloudinaryManager;
+    private readonly ICloudManager _cloudinaryManager;
 
-    public SliderService(ISliderRepository repository, IMapper mapper, ICloudinaryManager cloudinaryManager) : base(repository, mapper)
+    public SliderService(ISliderRepository repository, IMapper mapper, ICloudManager cloudinaryManager) : base(repository, mapper)
     {
         _sliderRepository = repository;
         _cloudinaryManager = cloudinaryManager;

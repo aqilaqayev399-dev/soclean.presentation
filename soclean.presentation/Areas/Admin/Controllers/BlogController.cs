@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using soclean.business.Dtos.Blog;
-using soclean.business.Dtos.Partner;
 using soclean.business.Services.Abstract;
-using soclean.business.Services.Implementations;
-using System.Threading.Tasks;
 
 namespace soclean.presentation.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class BlogController : Controller
 {
     private readonly IBlogService _blogService;

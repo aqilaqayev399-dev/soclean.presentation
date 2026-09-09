@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using soclean.business.Dtos.Product;
 using soclean.business.Services.Abstract;
+using soclean.business.Services.Implementations;
 
 namespace soclean.presentation.Controllers;
 
@@ -36,5 +37,25 @@ public class ShopController : Controller
         };
 
         return View(vm);
+    }
+
+
+
+    public async Task<IActionResult> Detail(int id)
+    {
+        var product = await _productService.GetAsync(id);
+        if (product == null)
+        {
+            return NotFound();
+        }
+        return View(product);
+    }
+
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        await _productService.DeleteAsync(id);
+        return RedirectToAction("index");
+
     }
 }

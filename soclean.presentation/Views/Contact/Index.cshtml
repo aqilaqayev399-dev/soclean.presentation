@@ -1,0 +1,828 @@
+﻿@{
+    ViewData["Title"] = "Əlaqə";
+}
+
+<style>
+
+    /* =====================================================
+           SOCLEAN CONTACT PAGE
+        ===================================================== */
+
+    .soclean-contact {
+        color: #172b4d;
+        background: #fff;
+    }
+
+    /* ================= HERO ================= */
+
+    .contact-hero {
+        min-height: 360px;
+        background: linear-gradient(90deg, rgba(18,59,112,.97) 0%, rgba(18,59,112,.88) 48%, rgba(18,59,112,.45) 100%), url('/img/bg-img/breadcumb.jpg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .contact-hero:after {
+            content: "";
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: rgba(251,183,16,.12);
+            right: 8%;
+            top: -120px;
+        }
+
+    .contact-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+    }
+
+    .contact-breadcrumb {
+        color: rgba(255,255,255,.75);
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    .contact-hero h1 {
+        color: #fff;
+        font-size: 56px;
+        font-weight: 700;
+        margin: 0 0 12px;
+    }
+
+    .contact-hero .subtitle {
+        color: #fbb710;
+        font-size: 21px;
+        font-weight: 500;
+    }
+
+
+    /* ================= INTRO ================= */
+
+    .contact-intro {
+        padding: 75px 0 50px;
+    }
+
+    .contact-heading {
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+        .contact-heading .small-title {
+            color: #fbb710;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .contact-heading h2 {
+            color: #123b70;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .contact-heading p {
+            color: #777;
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+
+    /* ================= CONTACT DETAILS ================= */
+
+    .contact-details {
+        padding: 25px 0 75px;
+    }
+
+    .contact-detail-card {
+        height: 100%;
+        background: #fff;
+        border: 1px solid #edf1f7;
+        border-radius: 15px;
+        padding: 28px 22px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        box-shadow: 0 7px 25px rgba(18,59,112,.07);
+        transition: all .3s ease;
+    }
+
+        .contact-detail-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(18,59,112,.13);
+        }
+
+    .detail-icon {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+        border-radius: 50%;
+        background: #123b70;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .detail-icon i {
+            color: #fbb710;
+            font-size: 21px;
+        }
+
+    .detail-text small {
+        display: block;
+        color: #fbb710;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        margin-bottom: 6px;
+    }
+
+    .detail-text h5 {
+        color: #123b70;
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0 0 5px;
+    }
+
+    .detail-text p {
+        color: #777;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .detail-text a {
+        color: #777;
+        text-decoration: none;
+        transition: .3s;
+    }
+
+        .detail-text a:hover {
+            color: #123b70;
+        }
+
+
+    /* ================= MAP + FORM ================= */
+
+    .contact-main {
+        padding: 0 0 90px;
+    }
+
+    .contact-main-box {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(18,59,112,.10);
+        border: 1px solid #edf1f7;
+    }
+
+    .contact-map {
+        height: 560px;
+    }
+
+    #googleMap {
+        width: 100%;
+        height: 100%;
+    }
+
+    .leaflet-container {
+        width: 100%;
+        height: 100%;
+        font-family: inherit;
+    }
+
+
+    /* ================= FORM ================= */
+
+    .contact-form {
+        padding: 48px 42px;
+        height: 100%;
+        background: #fff;
+    }
+
+        .contact-form .form-small-title {
+            color: #fbb710;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .contact-form h3 {
+            color: #123b70;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .contact-form .form-description {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+    .form-group {
+        margin-bottom: 17px;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 15px;
+    }
+
+        .form-row .form-group {
+            width: 50%;
+        }
+
+    .soclean-input {
+        width: 100%;
+        height: 50px;
+        padding: 0 16px;
+        border: 1px solid #e1e6ee;
+        border-radius: 7px;
+        background: #fafcff;
+        color: #333;
+        font-size: 13px;
+        outline: none;
+        transition: .3s;
+        box-shadow: none;
+    }
+
+        .soclean-input:focus {
+            border-color: #123b70;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(18,59,112,.06);
+        }
+
+    textarea.soclean-input {
+        height: 125px;
+        padding-top: 15px;
+        resize: none;
+    }
+
+    .soclean-input::placeholder {
+        color: #a0a5ad;
+    }
+
+
+    /* ================= BUTTON ================= */
+
+    .contact-submit {
+        width: 100%;
+        height: 52px;
+        border: none;
+        border-radius: 7px;
+        background: #fbb710;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all .3s ease;
+    }
+
+        .contact-submit i {
+            margin-left: 10px;
+            transition: .3s;
+        }
+
+        .contact-submit:hover {
+            background: #e5a700;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(251,183,16,.25);
+        }
+
+            .contact-submit:hover i {
+                transform: translateX(5px);
+            }
+
+
+    /* ================= CTA ================= */
+
+    .contact-cta {
+        padding: 65px 0;
+        background: #123b70;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .contact-cta:after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 45px solid rgba(251,183,16,.10);
+            border-radius: 50%;
+            right: -80px;
+            top: -100px;
+        }
+
+        .contact-cta h2 {
+            color: #fff;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .contact-cta p {
+            color: rgba(255,255,255,.75);
+            margin: 0;
+            font-size: 14px;
+        }
+
+    .cta-button {
+        display: inline-block;
+        padding: 13px 28px;
+        border-radius: 7px;
+        background: #fbb710;
+        color: #fff;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        transition: .3s;
+        position: relative;
+        z-index: 2;
+    }
+
+        .cta-button:hover {
+            background: #e5a700;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+
+    /* ================= TABLET ================= */
+
+    @@media (max-width: 991px) {
+
+        .contact-hero {
+            min-height: 320px;
+        }
+
+            .contact-hero h1 {
+                font-size: 45px;
+            }
+
+        .contact-intro {
+            padding-top: 60px;
+        }
+
+        .contact-map {
+            height: 400px;
+        }
+
+        .contact-form {
+            padding: 40px 30px;
+        }
+
+        .contact-cta {
+            text-align: center;
+        }
+
+            .contact-cta .text-lg-right {
+                text-align: center !important;
+                margin-top: 25px;
+            }
+    }
+
+
+    /* ================= MOBILE ================= */
+
+    @@media (max-width: 767px) {
+
+        .contact-hero {
+            min-height: 300px;
+        }
+
+            .contact-hero h1 {
+                font-size: 36px;
+            }
+
+            .contact-hero .subtitle {
+                font-size: 17px;
+            }
+
+        .contact-intro {
+            padding: 50px 0 30px;
+        }
+
+        .contact-heading h2 {
+            font-size: 30px;
+        }
+
+        .contact-details {
+            padding-bottom: 50px;
+        }
+
+        .contact-detail-card {
+            margin-bottom: 15px;
+        }
+
+        .contact-main {
+            padding-bottom: 60px;
+        }
+
+        .contact-map {
+            height: 330px;
+        }
+
+        .contact-form {
+            padding: 35px 22px;
+        }
+
+            .contact-form h3 {
+                font-size: 25px;
+            }
+
+        .form-row {
+            display: block;
+        }
+
+            .form-row .form-group {
+                width: 100%;
+            }
+
+        .contact-cta h2 {
+            font-size: 25px;
+        }
+    }
+
+</style>
+
+<div class="soclean-contact">
+
+    ```
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="contact-hero">
+
+        <div class="container">
+
+            <div class="contact-hero-content">
+
+                <div class="contact-breadcrumb">
+                    Ana Səhifə &nbsp; / &nbsp; Əlaqə
+                </div>
+
+                <h1>Bizimlə Əlaqə</h1>
+
+                <div class="subtitle">
+                    Peşəkar gigiyena və təmizlik həlləri üçün bizimlə əlaqə saxlayın
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INTRO
+    ===================================================== -->
+
+    <section class="contact-intro">
+
+        <div class="container">
+
+            <div class="contact-heading">
+
+                <div class="small-title">
+                    Əlaqə
+                </div>
+
+                <h2>Bizi Necə Tapmaq Olar?</h2>
+
+                <p>
+                    Məhsullarımız, qiymətlərimiz və korporativ əməkdaşlıq
+                    imkanları haqqında ətraflı məlumat almaq üçün
+                    bizimlə əlaqə saxlayın.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT DETAILS
+    ===================================================== -->
+
+    <section class="contact-details">
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <!-- ADDRESS -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="contact-detail-card">
+
+                        <div class="detail-icon">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+
+                        <div class="detail-text">
+
+                            <small>ÜNVAN</small>
+
+                            <h5>Bakı, Azərbaycan</h5>
+
+                            <p>Mağazamızı ziyarət edə bilərsiniz</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="contact-detail-card">
+
+                        <div class="detail-icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+
+                        <div class="detail-text">
+
+                            <small>TELEFON</small>
+
+                            <h5>
+                                <a href="tel:+994556872727">
+                                    +994 55 687 27 27
+                                </a>
+                            </h5>
+
+                            <p>Suallarınız üçün zəng edin</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="contact-detail-card">
+
+                        <div class="detail-icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+
+                        <div class="detail-text">
+
+                            <small>E-POÇT</small>
+
+                            <h5>
+                                <a href="mailto:socelan@gmail.com">
+                                    socelan@gmail.com
+                                </a>
+                            </h5>
+
+                            <p>Bizə e-poçt göndərin</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAP + FORM
+    ===================================================== -->
+
+    <section class="contact-main">
+
+        <div class="container">
+
+            <div class="contact-main-box">
+
+                <div class="row no-gutters">
+
+
+                    <!-- MAP -->
+
+                    <div class="col-lg-7">
+
+                        <div class="contact-map">
+
+                            <div id="googleMap"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM -->
+
+                    <div class="col-lg-5">
+
+                        <div class="contact-form">
+
+                            <div class="form-small-title">
+                                Bizə yazın
+                            </div>
+
+                            <h3>Mesaj Göndərin</h3>
+
+                            <p class="form-description">
+                                Sualınız, təklifiniz və ya məhsul sifarişiniz
+                                varsa, aşağıdakı formanı doldurun.
+                                Komandamız ən qısa zamanda sizinlə əlaqə saxlayacaq.
+                            </p>
+
+
+                            <form asp-action="Index" method="post">
+
+
+                                <div class="form-row">
+
+                                    <div class="form-group">
+
+                                        <input type="text"
+                                               name="Name"
+                                               class="soclean-input"
+                                               placeholder="Ad və Soyad"
+                                               required />
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <input type="email"
+                                               name="Email"
+                                               class="soclean-input"
+                                               placeholder="E-poçt"
+                                               required />
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <input type="tel"
+                                           name="PhoneNumber"
+                                           class="soclean-input"
+                                           placeholder="Telefon nömrəsi"
+                                           required />
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <textarea name="Message"
+                                              class="soclean-input"
+                                              placeholder="Mesajınızı yazın..."
+                                              required></textarea>
+
+                                </div>
+
+
+                                <button type="submit"
+                                        class="contact-submit">
+
+                                    MESAJ GÖNDƏR
+
+                                    <i class="fa fa-arrow-right"></i>
+
+                                </button>
+
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ===================================================== -->
+
+    <section class="contact-cta">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-8">
+
+                    <h2>
+                        Təmizlik standartınızı bizimlə yüksəldin!
+                    </h2>
+
+                    <p>
+                        So Clean — peşəkar gigiyena və təmizlik həllərində
+                        etibarlı tərəfdaşınız.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-4 text-lg-right">
+
+                    <a href="/Product" class="cta-button">
+
+                        Məhsullara bax
+
+                        <i class="fa fa-arrow-right ml-2"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    ```
+
+</div>
+
+<!-- =====================================================
+     LEAFLET
+===================================================== -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        var map = L.map('googleMap').setView(
+            [40.4093, 49.8671],
+            13
+        );
+
+
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                attribution: '&copy; OpenStreetMap contributors'
+            }
+        ).addTo(map);
+
+
+        var marker = L.marker(
+            [40.4093, 49.8671]
+        ).addTo(map);
+
+
+        marker.bindPopup(
+            "<b>So Clean</b><br>Bakı, Azərbaycan"
+        ).openPopup();
+
+
+        setTimeout(function () {
+            map.invalidateSize();
+        }, 300);
+
+    });
+
+</script>

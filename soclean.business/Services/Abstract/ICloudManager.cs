@@ -2,10 +2,10 @@
 
 namespace soclean.business.Services.Abstract;
 
-public interface ICloudinaryManager
+public interface ICloudManager
 {
     Task<string> FileCreateAsync(IFormFile file);
     Task<bool> FileDeleteAsync(string filePath);
-    Task<string> VideoUploadAsync(IFormFile file);
-    Task<bool> VideoDeleteAsync(string filePath);
+    //Task<string> VideoUploadAsync(IFormFile file);
+    //Task<bool> VideoDeleteAsync(string filePath);
 }

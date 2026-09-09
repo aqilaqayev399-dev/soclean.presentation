@@ -13,8 +13,8 @@ public class BlogService : CrudService<Blog, BlogCreateDto, BlogUpdateDto, BlogD
 {
 
     private readonly IBlogRepository _blogRepository;
-    private readonly ICloudinaryManager _cloudinaryManager;
-    public BlogService(IBlogRepository repository, IMapper mapper, ICloudinaryManager cloudinaryManager) : base(repository, mapper)
+    private readonly ICloudManager _cloudinaryManager;
+    public BlogService(IBlogRepository repository, IMapper mapper, ICloudManager cloudinaryManager) : base(repository, mapper)
     {
         _blogRepository = repository;
         _cloudinaryManager = cloudinaryManager;

@@ -1,13 +1,12 @@
 ﻿@using soclean.business.Dtos.Product
 @model List<ProductDto>
 
-<!-- ##### New Arrivals Area Start ##### -->
 <section class="new_arrivals_area section-padding-80 clearfix">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center">
-                    <h2>Popular Products</h2>
+                    <h2>Popular Məhsullar</h2>
                 </div>
             </div>
         </div>
@@ -20,41 +19,77 @@
 
                     @foreach (var item in Model)
                     {
-                        <!-- Single Product -->
                         <div class="single-product-wrapper">
+
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="@item.PictureFile" alt="">
-                                <!-- Hover Thumb -->
-                                <img class="hover-img" src="@item.PictureFile" alt="">
+
+                                <a asp-controller="Shop"
+                                   asp-action="Detail"
+                                   asp-route-id="@item.Id">
+
+                                    <img src="@item.PictureFile" alt="@item.Name">
+
+                                    <img class="hover-img"
+                                         src="@item.PictureFile"
+                                         alt="@item.Name">
+
+                                </a>
+
                                 <!-- Favourite -->
                                 <div class="product-favourite">
                                     <a href="#" class="favme fa fa-heart"></a>
                                 </div>
+
                             </div>
+
                             <!-- Product Description -->
                             <div class="product-description">
-                                <span>@item.CategoryName</span>
-                                <a href="single-product-details.html">
-                                    <h6>@item.Name</h6>
-                                </a>
-                               
-                                <!-- Hover Content -->
-                                <div class="hover-content">
-                                    <!-- Add to Cart -->
-                                    <div class="add-to-cart-btn">
-                                        <a href="#" class="btn essence-btn">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
+                                <span>@item.CategoryName</span>
+
+                                <a asp-controller="Shop"
+                                   asp-action="Detail"
+                                   asp-route-id="@item.Id">
+
+                                    <h6>@item.Name</h6>
+
+                                </a>
+
+                            </div>
+
+                        </div>
                     }
-                   
-              
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- ##### New Arrivals Area End ##### -->
+
+                                <style>
+    .product-img {
+        width: 100%;
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .product-img a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .product-img .hover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+                                </style>

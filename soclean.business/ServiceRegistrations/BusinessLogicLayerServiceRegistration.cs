@@ -13,15 +13,20 @@ namespace soclean.business.ServiceRegistrations
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            services.AddScoped<ICloudinaryManager, CloudinaryManager>();
-            //services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<ICloudManager, R2FileService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped(typeof(ICrudService<,,,>), typeof(CrudService<,,,>));
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPartnerService, PartnerService>();
             services.AddScoped<ISliderService, SliderService>();
             services.AddScoped<IBlogService, BlogService>();
-           
+            services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ISubscribeService, SubscribeService>();
+            services.AddScoped<IAdvertisementService, AdvertisementService>();
+
+
             return services;
         }
     }

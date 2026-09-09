@@ -10,3 +10,4 @@ public interface ISliderService : ICrudService<Slider, SliderCreateDto, SliderUp
     Task<SliderUpdateDto> GetSliderUpdateDto(int id);
     Task UpdateSliderAsync(SliderUpdateDto vm);
 }
+

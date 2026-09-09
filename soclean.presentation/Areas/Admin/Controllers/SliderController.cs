@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using soclean.business.Dtos.Slider;
 using soclean.business.Services.Abstract;
 
 namespace soclean.presentation.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
+
 
 public class SliderController : Controller
 {
